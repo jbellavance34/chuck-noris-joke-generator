@@ -15,6 +15,25 @@ api that gets random chuck noris jokes from dynamodb table
         - TABLE_NAME: chuck-noris-joke
     - handler: lambda_function.handler
 
+- create api gw 
+
+    - name: chuck-noris-joke-apigw
+    - type: REST API
+    - endpoint type: regional
+    - method for / path 
+        - GET
+            - integration type: lambda function
+            - lambda function: chuck-noris-joke-generator
+        - OPTIONS (made with option 'Enable CORS')
+            - integration type: MOCK
+            - Method response
+                - headers
+                    - Access-Control-Allow-Headers: Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token
+                    - Access-Control-Allow-Methods: GET,OPTIONS
+                    - Access-Control-Allow-Origin: *
+    - stage
+        - prod
+
 # Requirements
 
 - dynamodb:getItem permission
@@ -34,6 +53,21 @@ api that gets random chuck noris jokes from dynamodb table
         "joke": {
             "id": 93,
             "joke": "    Before he forgot a gift for Chuck Norris, Santa Claus was real.\n"
+        }
+    }
+    ```
+- Create api gw with the configuration section
+- test the invoke url 
+    ```bash
+    curl -s https://wbeu2sfdkk.execute-api.ca-central-1.amazonaws.com/prod |jq -r 
+    {
+        "statusCode": 200,
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "joke": {
+            "id": 44,
+            "joke": "    Chuck Norris can play the violin with a piano.\n"
         }
     }
     ```

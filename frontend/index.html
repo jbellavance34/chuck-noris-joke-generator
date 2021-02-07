@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chuck Norris Joke Generator</title>
+    <link href="https://fonts.googleapis.com/css?family=Dosis:400,700" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <button onclick="get_joke()">Get Chuck Norris joke</button> 
+        <p id="joke"></p>
+        <img src="https://images02.military.com/sites/default/files/styles/full/public/media/veteran-jobs/content-images/2016/03/chucknorris.jpg" alt="chucknorris">
+        <script>
+            function get_joke() {
+            var request = new XMLHttpRequest()
+                // change me to the url of the backend service
+                var api = 'https://wbeu2sfdkk.execute-api.ca-central-1.amazonaws.com/prod'
+                request.open('GET', api, true)
+                request.onload = function () {
+                var data = JSON.parse(this.response)
+                if (request.status >= 200 && request.status < 400) {
+                    document.getElementById('joke').innerHTML = data.joke.joke;
+                } else {
+                    console.log('error')
+                }
+                }
+                request.send()
+            }
+        </script>
+    </body>
+</html>
