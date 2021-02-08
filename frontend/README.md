@@ -15,6 +15,8 @@ html/javascript frontend to get chuck norris jokes
     - grant read permission on bucke: Yes, Update bucket policy
     - viewer protocol policy: Redirect HTTP to HTTPS
     - allowed http methods: GET, HEAD
+    - default root object: index.html
+
 
 # Upload s3 bucket
 
