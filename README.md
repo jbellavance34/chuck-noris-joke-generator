@@ -1,6 +1,6 @@
 # chuck-noris-joke-generator
 
-Simple serverless app that shows chuck noris joke on button click
+Simple serverless app that shows chuck norris joke on button click
 
 # Installation instruction
 
