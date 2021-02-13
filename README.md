@@ -18,3 +18,7 @@ Simple serverless app that shows chuck norris joke on button click
 # Live site demo
 
 https://chuck.mayoche.info
+
+# Documentation 
+
+https://mayoche.gitbook.io/test
